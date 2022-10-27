@@ -6,16 +6,12 @@ import safeAccess from "../../utils/safeAccess"
 import RemoveDuplicate from "../../utils/removeDuplicateObjects"
 
 import {
-  // setGetInitialData,
-  // setViewItemDetails,
   shopSelector,
   setViewCartItems,
   setHandleQuantity,
   setRemoveCartItems,
   setIsCheckout
 } from "../../store/featuresSlice/shopCartSlice"
-
-// import ArrayOfObjects from "../../types/ArrayOfObject"
 
 const ViewModel = () => {
   const ItemsSelector = useAppSelector(shopSelector, shallowEqual)

@@ -1,7 +1,4 @@
-import * as React from "react"
-
 import { Button, Divider, Grid } from "@mui/material"
-// import ArrayOfObjects from "../../../types/ArrayOfObject"
 
 type Props = {
   SubTotal: number | string

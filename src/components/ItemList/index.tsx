@@ -1,10 +1,6 @@
-import * as React from "react"
 import { Grid, Paper, Typography, Stack } from "@mui/material"
 import GradeIcon from "@mui/icons-material/Grade"
 import InventoryIcon from "@mui/icons-material/Inventory"
-// import ImageList from "@mui/material/ImageList"
-// import ImageListItem from "@mui/material/ImageListItem"
-// import ImageListItemBar from "@mui/material/ImageListItemBar"
 import ArrayOfObjects from "../../types/ArrayOfObject"
 import safeAccess from "../../utils/safeAccess"
 
@@ -94,49 +90,5 @@ export default function ItemList(props: Props) {
         ))}
       </Grid>
     </Paper>
-    // <ImageList
-    //   sx={{ width: "100%", height: "80vh", overflow: "auto" }}
-    //   gap={16}
-    //   cols={2}
-    // >
-    //   {items.map((item: ArrayOfObjects) => (
-    //     <ImageListItem key={`${item.image}`}>
-    //       <img
-    //         onClick={(e) => HandleClick(e, item)}
-    //         style={{
-    //           width: "60%",
-    //           objectFit: "cover",
-    //           cursor: "pointer",
-    //           margin: "2em"
-    //         }}
-    //         src={`${item.image}?w=8&h=8&fit=crop&auto=format`}
-    //         srcSet={`${item.image}?w=8&h=8&fit=crop&auto=format&dpr=2`}
-    //         alt={`${item.title}`}
-    //         loading="lazy"
-    //       />
-
-    //       <ImageListItemBar
-    //         title={`${item.title}`}
-    //         subtitle={
-    //           <div className="flex items-center justify-start gap-[5em]">
-    //             <span>
-    //               &#8369;
-    //               {`${item.price}`}
-    //             </span>
-    //             <span>
-    //               <GradeIcon />
-    //               {`${safeAccess(item, ["rating", "rate"])}`}
-    //             </span>
-    //             <span>
-    //               <InventoryIcon />
-    //               {`${safeAccess(item, ["rating", "count"])}`}
-    //             </span>
-    //           </div>
-    //         }
-    //         position="below"
-    //       />
-    //     </ImageListItem>
-    //   ))}
-    // </ImageList>
   )
 }

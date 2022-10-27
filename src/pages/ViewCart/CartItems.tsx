@@ -1,4 +1,3 @@
-import React from "react"
 import safeAccess from "../../utils/safeAccess"
 import CardCounts from "./components/cartCounts"
 import ViewModel from "./ViewModel"
