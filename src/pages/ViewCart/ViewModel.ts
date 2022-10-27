@@ -55,6 +55,9 @@ const ViewModel = () => {
 
   const handleCheckoutExit = React.useCallback((data: boolean) => {
     dispatch(setIsCheckout(data))
+    setTimeout(() => {
+      dispatch(setIsCheckout(!data))
+    }, 1000)
   }, [])
 
   React.useEffect(() => {

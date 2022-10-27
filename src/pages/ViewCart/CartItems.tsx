@@ -34,6 +34,7 @@ const CartItems = (props: Props) => {
           handleRemoveCartItems={handleRemoveCartItems}
         />
         <Checkout
+          itemCounts={itemCounts}
           SubTotal={SubTotal}
           ShippingFee={ShippingFee}
           Total={Total}

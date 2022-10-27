@@ -79,7 +79,7 @@ export const ShopCartSlice = createSlice({
       state.addCartItems = payload
     },
     setIsCheckout: (state, { payload }: PayloadAction<boolean>) => {
-      state.viewCartOpen = !payload
+      state.viewCartOpen = false
       state.purchased = payload
     }
   }

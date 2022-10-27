@@ -5,9 +5,16 @@ type Props = {
   ShippingFee: number | string
   Total: number | string
   handleCheckoutExit: (data: boolean) => void
+  itemCounts: number | string
 }
 
-const Checkout = ({ SubTotal, ShippingFee, Total, handleCheckoutExit }: Props) => {
+const Checkout = ({
+  SubTotal,
+  ShippingFee,
+  Total,
+  handleCheckoutExit,
+  itemCounts
+}: Props) => {
   return (
     <Grid container sx={{ marginTop: "1em", marginBottom: "1em", rowGap: "1em" }}>
       <Divider />
@@ -51,7 +58,7 @@ const Checkout = ({ SubTotal, ShippingFee, Total, handleCheckoutExit }: Props) =
       </Grid>
 
       <Button
-        onClick={() => handleCheckoutExit(true)}
+        onClick={() => itemCounts && handleCheckoutExit(true)}
         sx={{
           width: "100%",
           color: "white",

@@ -52,6 +52,8 @@ const ViewModel = () => {
     }
   }, [])
 
+  console.log("ItemsSelector", ItemsSelector)
+
   return {
     ItemsSelector,
     setGetInitialData,

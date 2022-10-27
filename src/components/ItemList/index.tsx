@@ -24,7 +24,7 @@ export default function ItemList(props: Props) {
         sx={{ overflow: "auto", height: "80vh", marginTop: "3em" }}
       >
         {items.map((item: ArrayOfObjects) => (
-          <Grid item xs={12} md={6} lg={3}>
+          <Grid item xs={12} md={6} lg={3} key={`${item.title}`}>
             <Stack
               onClick={() => HandleClick(item)}
               direction={"column"}
