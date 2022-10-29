@@ -72,7 +72,7 @@ const ViewModel = () => {
   console.log("ItemsSelector", ItemsSelector)
 
   return {
-    ItemsSelector,
+    cartItemsSelector: ItemsSelector,
     cartItems: removeItemDuplicates,
     itemCounts: removeItemDuplicates.length,
     handleOpenCart,

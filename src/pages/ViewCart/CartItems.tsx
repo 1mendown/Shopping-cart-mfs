@@ -4,16 +4,32 @@ import ViewModel from "./ViewModel"
 import DialogBox from "../../components/dialogs"
 import AddedToCart from "./components/addedToCart"
 import Checkout from "./components/checkout"
-import Box from "@mui/material/Box"
+import ArrayOfObjects from "../../types/ArrayOfObject"
 
-type Props = {}
+type Props = {
+  headers?: { [key: string]: string }[]
+  snackBarMessage: (value: boolean) => JSX.Element
+  itemCounts: number | string
+  handleOpenCart: (data: boolean) => void
+  open: boolean
+  cartItems: ArrayOfObjects[]
+  handleQuantity: (action: string, id: unknown) => void
+  handleRemoveCartItems: (data: string | number) => void
+  SubTotal: number | string
+  ShippingFee: number | string
+  Total: number | string
+  handleCheckoutExit: (data: boolean) => void
+  checkout: boolean
+}
 
 const CartItems = (props: Props) => {
   const {
-    ItemsSelector,
-    cartItems,
+    headers,
+    snackBarMessage,
     itemCounts,
     handleOpenCart,
+    open,
+    cartItems,
     handleQuantity,
     handleRemoveCartItems,
     SubTotal,
@@ -21,13 +37,14 @@ const CartItems = (props: Props) => {
     Total,
     handleCheckoutExit,
     checkout
-  } = ViewModel()
+  } = props
 
   return (
     <>
       <CardCounts itemCounts={itemCounts} handleOpenCart={handleOpenCart} />
-      <DialogBox open={safeAccess(ItemsSelector, ["viewCartOpen"])}>
+      <DialogBox open={open}>
         <AddedToCart
+          headers={headers}
           cartItemList={cartItems}
           handleQuantity={handleQuantity}
           handleCloseAddToCart={handleOpenCart}
@@ -41,9 +58,7 @@ const CartItems = (props: Props) => {
           handleCheckoutExit={handleCheckoutExit}
         />
       </DialogBox>
-      <DialogBox open={checkout}>
-        <Box sx={{ padding: "2em" }}>THANKS FOR YOUR PURCHASE</Box>
-      </DialogBox>
+      {snackBarMessage(checkout)}
     </>
   )
 }

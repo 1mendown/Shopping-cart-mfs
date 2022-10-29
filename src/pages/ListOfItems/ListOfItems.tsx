@@ -1,22 +1,32 @@
 import Box from "@mui/material/Box"
 import ItemList from "../../components/ItemList"
-import ViewModel from "./ViewModel"
-import safeAccess from "../../utils/safeAccess"
+import ArrayOfObjects from "../../types/ArrayOfObject"
 import CardItems from "../../components/cardItems"
 import DialogBox from "../../components/dialogs"
 import SnackBarMessage from "../../components/snackBar"
+import { itemListHeader } from "../../types/dataIn"
 
-type Props = {}
+type Props = {
+  headers: itemListHeader[]
+  items: ArrayOfObjects[]
+  openCardItems: boolean
+  handleViewItemCLick: (item: ArrayOfObjects) => void
+  cardItems: ArrayOfObjects
+  handleCloseItem?: (e: React.MouseEvent<any>) => void
+  handleAddTuCart: (data: ArrayOfObjects | boolean) => void
+  handleCheckoutCart: (data: ArrayOfObjects) => void
+}
 
-const mainWindow = <T extends object>(props: Props) => {
-  const {
-    ItemsSelector,
-    handleAddTuCart,
-    HandleViewItemCLick,
-    handleCloseItem,
-    handleCheckoutCart
-  } = ViewModel()
-
+const mainWindow = ({
+  headers,
+  items,
+  openCardItems,
+  handleViewItemCLick,
+  cardItems,
+  handleCloseItem,
+  handleAddTuCart,
+  handleCheckoutCart
+}: Props) => {
   return (
     <>
       <Box
@@ -26,23 +36,19 @@ const mainWindow = <T extends object>(props: Props) => {
         }}
       >
         <ItemList
-          items={safeAccess(ItemsSelector, ["items"])}
-          onClickValue={HandleViewItemCLick}
+          headers={headers}
+          items={items}
+          onClickValue={handleViewItemCLick}
         />
       </Box>
-      <DialogBox open={safeAccess(ItemsSelector, ["viewItem", "isOpen"])}>
+      <DialogBox open={openCardItems}>
         <CardItems
-          item={safeAccess(ItemsSelector, ["viewItem"])}
+          item={cardItems}
           handleCloseItem={handleCloseItem}
           handleAddTuCart={handleAddTuCart}
           handleCheckoutCart={handleCheckoutCart}
         />
       </DialogBox>
-      <SnackBarMessage
-        open={safeAccess(ItemsSelector, ["addCartMessage", "open"])}
-        message={safeAccess(ItemsSelector, ["addCartMessage", "message"])}
-        handleClose={handleAddTuCart}
-      />
     </>
   )
 }

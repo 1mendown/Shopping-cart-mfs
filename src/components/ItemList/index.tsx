@@ -1,16 +1,16 @@
+import * as React from "react"
 import { Grid, Paper, Typography, Stack } from "@mui/material"
-import GradeIcon from "@mui/icons-material/Grade"
-import InventoryIcon from "@mui/icons-material/Inventory"
 import ArrayOfObjects from "../../types/ArrayOfObject"
 import safeAccess from "../../utils/safeAccess"
-
+import { itemListHeader } from "../../types/dataIn"
 interface Props {
   items: ArrayOfObjects[]
   onClickValue: (item: ArrayOfObjects) => void
+  headers: itemListHeader[]
 }
 
 export default function ItemList(props: Props) {
-  const { items, onClickValue } = props
+  const { items, onClickValue, headers } = props
 
   const HandleClick = (item: ArrayOfObjects) => {
     onClickValue(item)
@@ -38,53 +38,38 @@ export default function ItemList(props: Props) {
               }}
               component={Paper}
             >
-              <div>
-                <img
-                  onClick={() => HandleClick(item)}
-                  style={{
-                    width: "100px",
-                    objectFit: "cover",
-                    cursor: "pointer"
-                  }}
-                  src={`${item.image}?w=8&h=8&fit=crop&auto=format`}
-                  srcSet={`${item.image}?w=8&h=8&fit=crop&auto=format&dpr=2`}
-                  alt={`${item.title}`}
-                  loading="lazy"
-                />
-              </div>
-              <div className="text-center">
-                <Typography
-                  variant="h6"
-                  component="h6"
-                  sx={{ fontSize: "16px" }}
-                >{`${item.title}`}</Typography>
-              </div>
-              <div className="flex gap-x-12">
-                <span className="flex">
-                  <GradeIcon />
-                  <Typography
-                    variant="h6"
-                    component="h6"
-                    sx={{ fontSize: "16px" }}
-                  >{`${safeAccess(item, ["rating", "rate"])}`}</Typography>
-                </span>
-                <span className="flex">
-                  <InventoryIcon />
-                  <Typography
-                    variant="h6"
-                    component="h6"
-                    sx={{ fontSize: "16px" }}
-                  >{`${safeAccess(item, ["rating", "count"])}`}</Typography>
-                </span>
-              </div>
-              <div className="flex">
-                &#8369;
-                <Typography
-                  variant="h6"
-                  component="h6"
-                  sx={{ fontSize: "16px" }}
-                >{`${item.price}`}</Typography>
-              </div>
+              {headers.map((headerItems: { [key: string]: any }) => {
+                return (
+                  <div className={headerItems["className"]}>
+                    {headerItems.hasImage ? (
+                      headerItems.imageComponent(
+                        safeAccess(item, [`${headerItems["accessor"]}`])
+                      )
+                    ) : headerItems.nestedObj ? (
+                      <Typography
+                        variant="h6"
+                        component="h6"
+                        sx={{ fontSize: "16px" }}
+                      >
+                        <span className="flex gap-[0.5em]">
+                          {headerItems["withIcons"] && headerItems["withIcons"]}
+                          {safeAccess(item, headerItems["accessor"])}
+                        </span>
+                      </Typography>
+                    ) : (
+                      <Typography
+                        variant="h6"
+                        component="h6"
+                        sx={{ fontSize: "16px" }}
+                        className={headerItems["className"]}
+                      >
+                        {headerItems["htmlSign"] && headerItems["htmlSign"]}
+                        {safeAccess(item, [`${headerItems["accessor"]}`])}
+                      </Typography>
+                    )}
+                  </div>
+                )
+              })}
             </Stack>
           </Grid>
         ))}

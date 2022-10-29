@@ -16,6 +16,7 @@ import CancelIcon from "@mui/icons-material/Cancel"
 
 type Props = {
   cartItemList: ArrayOfObjects[]
+  headers?: { [key: string]: string }[]
   handleQuantity: (action: string, id: unknown) => void
   handleCloseAddToCart: (data: boolean) => void
   handleRemoveCartItems: (data: string | number) => void
@@ -25,10 +26,9 @@ const AddedToCart = ({
   cartItemList,
   handleQuantity,
   handleCloseAddToCart,
-  handleRemoveCartItems
+  handleRemoveCartItems,
+  headers
 }: Props) => {
-  console.log("cartItemList", cartItemList)
-
   return (
     <Box sx={{ width: "100%", height: "100%" }}>
       <>
@@ -67,79 +67,118 @@ const AddedToCart = ({
               }}
             >
               <TableRow sx={{ fontWeight: 1000 }}>
-                <TableCell align="left">Quantity</TableCell>
-                <TableCell align="left">Items</TableCell>
-                <TableCell align="left">Title</TableCell>
-                <TableCell align="left">Price</TableCell>
-                <TableCell align="left" sx={{ width: "100px" }}>
-                  Total Price
-                </TableCell>
-                <TableCell align="left" sx={{ width: "100px" }}></TableCell>
+                {headers?.map((items) => {
+                  console.log('safeAccess(items, ["sx"])', safeAccess(items, ["sx"]))
+                  return (
+                    <TableCell
+                      align="left"
+                      sx={
+                        safeAccess(items, ["sx"]) ? safeAccess(items, ["sx"]) : null
+                      }
+                      key={`${safeAccess(items, ["accessor"])} ${Math.random()}`}
+                    >
+                      {items["header"]}
+                    </TableCell>
+                  )
+                })}
               </TableRow>
             </TableHead>
             {cartItemList.length > 0 ? (
               <TableBody>
-                {cartItemList.map((item: ArrayOfObjects) => (
-                  <TableRow
-                    key={`${item.title}`}
-                    className="mb-10"
-                    sx={{
-                      "&:last-child td, &:last-child th": { border: 0 }
-                    }}
-                  >
-                    <TableCell>
-                      <Stack
-                        direction="row"
-                        alignItems={"center"}
-                        sx={{ gap: "1em" }}
-                      >
-                        <AddIcon
-                          onClick={() =>
-                            handleQuantity("add", safeAccess(item, ["id"]))
-                          }
-                          sx={{ cursor: "pointer", "&:hover": { opacity: 0.1 } }}
-                        />
-                        <span>{safeAccess(item, ["quantity"])}</span>
-
-                        <RemoveIcon
-                          onClick={() =>
-                            handleQuantity("minus", safeAccess(item, ["id"]))
-                          }
-                          sx={{ cursor: "pointer", "&:hover": { opacity: 0.1 } }}
-                        />
-                      </Stack>
-                    </TableCell>
-                    <TableCell align="center">
-                      <img
-                        style={{
-                          width: "50px",
-                          objectFit: "cover",
-                          cursor: "pointer"
+                <>
+                  {cartItemList.map((bodyItem) => {
+                    return (
+                      <TableRow
+                        className="mb-10"
+                        sx={{
+                          "&:last-child td, &:last-child th": { border: 0 }
                         }}
-                        src={`${item.image}?w=8&h=8&fit=crop&auto=format`}
-                        srcSet={`${item.image}?w=8&h=8&fit=crop&auto=format&dpr=2`}
-                        alt={`${item.title}`}
-                        loading="lazy"
-                      />
-                    </TableCell>
-                    <TableCell align="left">{`${item.title}`}</TableCell>
-                    <TableCell align="left">&#8369;{`${item.price}`}</TableCell>
-                    <TableCell align="left">
-                      &#8369;
-                      {`${(
-                        safeAccess(item, ["price"]) * safeAccess(item, ["quantity"])
-                      ).toFixed(2)}`}
-                    </TableCell>
-                    <TableCell align="left">
-                      <CancelIcon
-                        sx={{ cursor: "pointer", color: "red" }}
-                        onClick={() =>
-                          handleRemoveCartItems(safeAccess(item, ["id"]))
-                        }
-                      />
-                    </TableCell>
-                  </TableRow>
-                ))}
+                      >
+                        {headers?.map((headerItems: any, id) => {
+                          return (
+                            <TableCell key={id}>
+                              {headerItems.withComputation ? (
+                                cartItemList
+                                  .reduce(
+                                    (
+                                      sum: number,
+                                      acc: { [key: string]: unknown }
+                                    ) => {
+                                      return (
+                                        sum +
+                                        safeAccess(acc, ["price"]) *
+                                          safeAccess(acc, ["quantity"])
+                                      )
+                                    },
+                                    0
+                                  )
+                                  .toFixed(2)
+                              ) : headerItems.hasComponent ? (
+                                <Stack
+                                  direction="row"
+                                  alignItems={"center"}
+                                  sx={{ gap: "1em" }}
+                                >
+                                  <AddIcon
+                                    onClick={() =>
+                                      handleQuantity(
+                                        "add",
+                                        safeAccess(bodyItem, [
+                                          `${headerItems["id"]}`
+                                        ])
+                                      )
+                                    }
+                                    sx={{
+                                      cursor: "pointer",
+                                      "&:hover": { opacity: 0.1 }
+                                    }}
+                                  />
+                                  <span>
+                                    {safeAccess(bodyItem, [
+                                      `${headerItems["accessor"]}`
+                                    ])}
+                                  </span>
+
+                                  <RemoveIcon
+                                    onClick={() =>
+                                      handleQuantity(
+                                        "minus",
+                                        safeAccess(bodyItem, [
+                                          `${headerItems["id"]}`
+                                        ])
+                                      )
+                                    }
+                                    sx={{
+                                      cursor: "pointer",
+                                      "&:hover": { opacity: 0.1 }
+                                    }}
+                                  />
+                                </Stack>
+                              ) : headerItems.hasImage ? (
+                                headerItems.imageComponent(
+                                  safeAccess(bodyItem, [
+                                    `${headerItems["accessor"]}`
+                                  ])
+                                )
+                              ) : headerItems["accessor"] === "cancelIcon" ? (
+                                <CancelIcon
+                                  sx={{ cursor: "pointer", color: "red" }}
+                                  onClick={() =>
+                                    handleRemoveCartItems(
+                                      safeAccess(bodyItem, [`${headerItems["id"]}`])
+                                    )
+                                  }
+                                />
+                              ) : (
+                                safeAccess(bodyItem, [`${headerItems["accessor"]}`])
+                              )}
+                            </TableCell>
+                          )
+                        })}
+                      </TableRow>
+                    )
+                  })}
+                </>
               </TableBody>
             ) : (
               <h1 className="absolute bottom-[-1] left-0 translate-y-[650%] translate-x-[340%]">

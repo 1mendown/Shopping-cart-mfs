@@ -1,38 +1,138 @@
-import * as React from "react"
-import CssBaseline from "@mui/material/CssBaseline"
+import ShoppingCart from "./pages"
+import GradeIcon from "@mui/icons-material/Grade"
+import InventoryIcon from "@mui/icons-material/Inventory"
+import DialogBox from "../src/components/dialogs"
 import Box from "@mui/material/Box"
-import Grid from "@mui/material/Grid"
-import ListOfItems from "./pages/ListOfItems/ListOfItems"
-import Container from "@mui/material/Container"
-import ViewCart from "./pages/ViewCart/CartItems"
-
-export default function SimpleContainer() {
+import SnackBarMessage from "../src/components/snackBar"
+import { Products } from "../src/services"
+export default function App() {
   return (
-    <React.Fragment>
-      <CssBaseline />
-      <Container maxWidth={false}>
-        <Box sx={{ bgcolor: "white", height: "100vh", flexGrow: 1 }}>
-          <Grid container>
-            <Grid
-              container
-              direction="row"
-              justifyContent="space-around"
-              id="title header"
-              className="mt-5"
-            >
-              <Grid item xs={8}>
-                SIMPLE SHOPPING CART
-              </Grid>
-              <Grid item xs={4} className="flex justify-end">
-                <ViewCart />
-              </Grid>
-            </Grid>
-            <Grid item xs={12} id="list-items-box">
-              <ListOfItems />
-            </Grid>
-          </Grid>
-        </Box>
-      </Container>
-    </React.Fragment>
+    <ShoppingCart
+      dataLoad={{
+        api: {
+          getAll: Products.GeAll("products")
+        }
+      }}
+      dataIn={{
+        itemListHeader: [
+          {
+            id: "id",
+            accessor: "image",
+            hasImage: true,
+            imageComponent: (value: unknown) => {
+              return (
+                <img
+                  style={{
+                    width: "100px",
+                    objectFit: "cover",
+                    cursor: "pointer"
+                  }}
+                  src={`${value}?w=8&h=8&fit=crop&auto=format`}
+                  srcSet={`${value}?w=8&h=8&fit=crop&auto=format&dpr=2`}
+                  alt={`${value}`}
+                  loading="lazy"
+                />
+              )
+            }
+          },
+          { id: "id", accessor: "title", className: "text-center" },
+          {
+            id: "id",
+            nestedObj: true,
+            withIcons: <GradeIcon />,
+            accessor: ["rating", "rate"],
+            className: "flex gap-x-12"
+          },
+          {
+            id: "id",
+            nestedObj: true,
+            withIcons: <InventoryIcon />,
+            accessor: ["rating", "count"],
+            className: "flex gap-x-12"
+          },
+          {
+            id: "id",
+            accessor: "price",
+            htmlSign: <span>&#8369; </span>,
+            className: "flex"
+          }
+        ],
+        addToCartHeader: [
+          {
+            id: "id",
+            header: "Quantity",
+            accessor: "quantity",
+            hasComponent: true
+          },
+          {
+            id: "id",
+            header: "Items",
+            accessor: "image",
+            hasImage: true,
+            imageComponent: (value: unknown) => {
+              return (
+                <img
+                  style={{
+                    width: "50px",
+                    objectFit: "cover",
+                    cursor: "pointer"
+                  }}
+                  src={`${value}?w=8&h=8&fit=crop&auto=format`}
+                  srcSet={`${value}?w=8&h=8&fit=crop&auto=format&dpr=2`}
+                  alt={`${value}`}
+                  loading="lazy"
+                />
+              )
+            }
+          },
+          {
+            id: "id",
+            header: "Title",
+            accessor: "title",
+            sx: { width: "100px" }
+          },
+          {
+            id: "id",
+            header: "Price",
+            accessor: "price"
+          },
+          {
+            id: "id",
+            header: "Total Price",
+            accessor: { price: "price", quantity: "quantity" },
+            withComputation: "multiply",
+            sx: { width: "100px" }
+          },
+          {
+            id: "id",
+            header: "",
+            accessor: "cancelIcon",
+            sx: { width: "100px" }
+          }
+        ]
+      }}
+      dataOut={{
+        snackBarMessage: (value: boolean) => {
+          return (
+            <DialogBox open={value}>
+              <Box sx={{ padding: "2em" }}>THANKS FOR YOUR PURCHASE</Box>
+            </DialogBox>
+          )
+        },
+        addToCartSnackBarMessage: (
+          openSnackBar: boolean,
+          snackBarMessage: string,
+          handleAddTuCart: (data: boolean) => void
+        ) => {
+          return (
+            <SnackBarMessage
+              open={openSnackBar}
+              message={snackBarMessage}
+              handleClose={handleAddTuCart}
+            />
+          )
+        }
+      }}
+    />
   )
 }
