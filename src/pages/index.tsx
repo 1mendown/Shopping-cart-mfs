@@ -12,7 +12,7 @@ import safeAccess from "../utils/safeAccess"
 import ListItemViewModel from "../pages/ListOfItems/ViewModel"
 import CartItemsViewModel from "../pages/ViewCart/ViewModel"
 
-type Props = {
+interface Props {
   dataIn?: DataIN
   dataLoad?: DataLoad
   dataOut: DataOut
