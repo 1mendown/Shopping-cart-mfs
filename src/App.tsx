@@ -5,7 +5,7 @@ import DataIN from "../src/types/dataIn"
 import DataLoad from "../src/types/dataLoad"
 import DataOut from "../src/types/dataOut"
 
-export type DataProps = {
+type DataProps = {
   dataIn?: DataIN
   dataLoad?: DataLoad
   dataOut: DataOut
