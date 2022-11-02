@@ -3,7 +3,6 @@ import ItemList from "../../components/ItemList"
 import ArrayOfObjects from "../../types/ArrayOfObject"
 import CardItems from "../../components/cardItems"
 import DialogBox from "../../components/dialogs"
-import SnackBarMessage from "../../components/snackBar"
 import { itemListHeader } from "../../types/dataIn"
 
 type Props = {
