@@ -8,7 +8,7 @@ import DataOut from "../src/types/dataOut"
 export type DataProps = {
   dataIn?: DataIN
   dataLoad?: DataLoad
-  dataOut?: DataOut
+  dataOut: DataOut
 }
 
 export default function ShoppingCartIndex({ dataIn, dataLoad, dataOut }: DataProps) {

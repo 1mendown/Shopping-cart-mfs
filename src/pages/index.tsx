@@ -15,7 +15,7 @@ import CartItemsViewModel from "../pages/ViewCart/ViewModel"
 type Props = {
   dataIn?: DataIN
   dataLoad?: DataLoad
-  dataOut?: DataOut
+  dataOut: DataOut
 }
 
 export default function SimpleContainer(props: Props) {
@@ -88,7 +88,7 @@ export default function SimpleContainer(props: Props) {
                 openCardItems={safeAccess(ItemsSelector, ["viewItem", "isOpen"])}
                 headers={safeAccess(dataIn, ["itemListHeader"])}
               />
-              {dataOut?.addToCartSnackBarMessage(
+              {dataOut.addToCartSnackBarMessage(
                 safeAccess(ItemsSelector, ["addCartMessage", "open"]),
                 safeAccess(ItemsSelector, ["addCartMessage", "message"]),
                 handleAddTuCart
