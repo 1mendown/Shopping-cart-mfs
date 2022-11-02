@@ -11,7 +11,7 @@ Bootcamp Sample of Simple Shopping Cart
 For installation
 
 ```sh
-npm install shopping-cart-mfs --registry http://miniapp.serino.com:4873/ npm install
+npm install shopping-cart-mfs --registry http://miniapp.serino.com:4873/
 ```
 
 ## Usage
