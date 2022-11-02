@@ -12,12 +12,12 @@ import DataLoad from "../../types/dataLoad"
 
 import ArrayOfObjects from "../../types/ArrayOfObject"
 
-const ViewModel = (dataLoad: DataLoad) => {
+const ViewModel = (dataLoad?: DataLoad) => {
   const ItemsSelector = useAppSelector(shopSelector, shallowEqual)
   const dispatch = useAppDispatch()
 
   const fetchData = async () => {
-    const dataresult: ArrayOfObjects[] = await dataLoad.api.getAll
+    const dataresult: ArrayOfObjects[] = await dataLoad?.api.getAll
     dispatch(setGetInitialData(dataresult))
   }
 
