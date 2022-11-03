@@ -1,6 +1,7 @@
 {
   "name": "shopping-cart-mfs",
   "version": "1.0.1",
+  "description": "Simple Shopping cart for mini app",
   "dependencies": {
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
