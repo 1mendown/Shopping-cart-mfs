@@ -211,9 +211,9 @@ export default function App() {
 
 ## Demo
 
-![](https://gitlab.com/quality-developers/shopping-cart/-/blob/main/sampleDemo.gif)
+<!-- ![](https://gitlab.com/quality-developers/shopping-cart/-/blob/main/sampleDemo.gif) -->
 
-<!-- <img src='/src/assets/shoppingCartDemo.gif'/> -->
+<img src='https://gitlab.com/quality-developers/shopping-cart/-/blob/main/sampleDemo.gif'/>
 
 ## Peer Dependecies
 
