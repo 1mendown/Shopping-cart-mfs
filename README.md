@@ -53,8 +53,8 @@ dataIn:{
   }[]
 }
 dataOut:{
-  snackBarMessage: (value: boolean) => JSX.Element // required
-  addToCartSnackBarMessage: (                      // required
+  snackBarMessage: (value: boolean) => JSX.Element // required you can use any html elements or materil ui
+  addToCartSnackBarMessage: (                      // required you can use any html elements or materil ui
     openSnackBar: boolean,
     snackBarMessage: string,
     handleAddTuCart: (data: boolean) => void
@@ -68,6 +68,12 @@ dataOut:{
 
 ```jsx
 import { ShoppingCart } from "shopping-cart-mfs"
+import GradeIcon from "@mui/icons-material/Grade";
+import InventoryIcon from "@mui/icons-material/Inventory";
+import DialogBox from "@mui/material/Dialog";
+import Box from "@mui/material/Box";
+import Snackbar from "@mui/material/Snackbar";
+import axios from "axios"
 
 export default function App() {
   return (
