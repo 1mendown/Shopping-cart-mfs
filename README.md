@@ -213,7 +213,7 @@ export default function App() {
 
 ![Alt Text](https://gitlab.com/quality-developers/shopping-cart/-/blob/main/sampleDemo.gif)
 
-<img src='https://gitlab.com/quality-developers/shopping-cart/-/blob/main/sampleDemo.gif'/>
+<img src="https://gitlab.com/quality-developers/demogif/-/blob/main/sampleDemo.gif"/>
 
 ## Peer Dependecies
 
