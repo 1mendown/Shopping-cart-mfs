@@ -74,7 +74,7 @@ export default function App() {
     <ShoppingCart
       dataLoad={{
         api: {
-          getAll: getAll: axios.get("https://fakestoreapi.com/") 
+          getAll: getAll: axios.get("https://fakestoreapi.com/")
 
         }
       }}
@@ -207,14 +207,13 @@ export default function App() {
 
 ## Sample Return value from GetAll Api
 
-
 <img src='/src/assets/returnValue.png'/>
 
+## Demo
 
-## Demo 
+![](https://gitlab.com/quality-developers/demogif/-/blob/main/sampleDemo.gif)
 
-<img src='/src/assets/shoppingCartDemo.gif'/>
-
+<!-- <img src='/src/assets/shoppingCartDemo.gif'/> -->
 
 ## Peer Dependecies
 
