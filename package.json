@@ -1,6 +1,6 @@
 {
   "name": "shopping-cart-mfs",
-  "version": "1.2.2",
+  "version": "1.2.4",
   "description": "Simple Shopping cart for mini app",
   "main": "lib/index.js",
   "module": "lib/index.esm.js",
