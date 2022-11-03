@@ -207,9 +207,9 @@ export default function App() {
 
 ## Sample Return value 
 
-```sh 
-  <img src='/src/assets/returnValue.png'/>
-```
+
+<img src='/src/assets/returnValue.png'/>
+
 
 ## Peer Dependecies
 
