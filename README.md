@@ -11,7 +11,7 @@ Bootcamp Sample of Simple Shopping Cart
 For installation
 
 ```sh
-npm install shopping-cart-mfs --registry http://miniapp.serino.com:4873/
+npm install shopping-cart-mfs
 ```
 
 ## Usage
@@ -31,30 +31,30 @@ dataLoad:{
 }
 dataIn:{
    addToCartHeader: {
-    id: string
-    header: string
-    accessor: string | { [key: string]: unknown }
-    withComputation?: { [key: string]: unknown } | boolean | string
-    hasComponent?: boolean
-    hasImage?: true
-    imageComponent?: any
-    sx?: CSSProperties | null
+    id: string         // required
+    header: string     // required
+    accessor: string | { [key: string]: unknown } // required
+    withComputation?: { [key: string]: unknown } | boolean | string // required
+    hasComponent?: boolean  // optional if need other components
+    hasImage?: true  // optional if the components is image
+    imageComponent?: any // optional
+    sx?: CSSProperties | null // image styles properties
   }[]
   itemListHeader: {
-    id: string
-    nestedObj?: boolean
-    mainObj?: string
-    htmlSign?: JSX.Element
-    withIcons?: JSX.Element
-    accessor: string | Array<string>
-    imageComponent?: any
-    hasImage?: boolean
-    className?: string
+    id: string              // required
+    nestedObj?: boolean     // optional if you need to access deeper objects
+    mainObj?: string        // optional main object before to access deeper object values
+    htmlSign?: JSX.Element  // optional only html signs if needed
+    withIcons?: JSX.Element // optional if needed to add icons
+    accessor: string | Array<string> // required because it is need to access object value
+    imageComponent?: any    // optional if need image component
+    hasImage?: boolean      // optional boolean only if has image component
+    className?: string      // optional className for styling
   }[]
 }
 dataOut:{
-  snackBarMessage: (value: boolean) => JSX.Element
-  addToCartSnackBarMessage: (
+  snackBarMessage: (value: boolean) => JSX.Element // required
+  addToCartSnackBarMessage: (                      // required
     openSnackBar: boolean,
     snackBarMessage: string,
     handleAddTuCart: (data: boolean) => void
@@ -205,6 +205,7 @@ export default function App() {
 ## Peer Dependecies
 
 ```sh
+"node":"v16.14.0"
 "react": "^17.0.2",
 "react-dom": "^17.0.2"
 ```
