@@ -217,7 +217,7 @@ export default function App() {
 
 ## Demo
 
-![Alt Text](https://gitlab.com/quality-developers/shopping-cart/-/blob/main/sampleDemo.gif)
+![Demo](https://gitlab.com/quality-developers/shopping-cart/-/blob/main/sampleDemo.gif)
 
 <img src='/src/assets/shoppingCartDemo.gif'/>
 
