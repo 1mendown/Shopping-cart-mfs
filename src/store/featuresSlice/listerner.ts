@@ -1,6 +1,6 @@
 import { AnyAction, createListenerMiddleware } from "@reduxjs/toolkit"
 import RemoveDuplicate from "../../utils/removeDuplicateObjects"
-import ArrayOfObjects from "../../types/ArrayOfObject"
+import IarrayOfObjects from "../../types/ArrayOfObject"
 import safeAccess from "../../utils/safeAccess"
 
 import {
@@ -17,11 +17,11 @@ listenerMiddleware.startListening({
   effect: async (action: AnyAction, listenerApi: any) => {
     try {
       const state = RemoveDuplicate(
-        listenerApi.getOriginalState()?.ShopCartReducer?.addCartItems
+        listenerApi.getOriginalState()?.shoppingCart?.addCartItems
       )
 
       const newState = state.filter(
-        (items: ArrayOfObjects) => items.id !== action.payload
+        (items: IarrayOfObjects) => items.id !== action.payload
       )
 
       listenerApi.dispatch(setRemoveItemValue(newState))
@@ -38,10 +38,10 @@ listenerMiddleware.startListening({
     try {
       const payload = action.payload
       const state = RemoveDuplicate(
-        listenerApi.getOriginalState()?.ShopCartReducer?.addCartItems
+        listenerApi.getOriginalState()?.shoppingCart?.addCartItems
       )
 
-      const newValue = state.map((items: ArrayOfObjects) => {
+      const newValue = state.map((items: IarrayOfObjects) => {
         if (payload.data === "add" && items.id === payload.id) {
           return {
             ...items,
