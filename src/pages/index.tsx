@@ -9,7 +9,7 @@ import IdataIN from "../types/dataIn"
 import IdataLoad from "../types/dataLoad"
 import IdataOut from "../types/dataOut"
 import safeAccess from "../utils/safeAccess"
-import ListItemViewModel from "../pages/ListOfItems/ViewModel"
+import ListItemViewModel from "../pages/ListOfItems/ListItemsViewModel"
 import CartItemsViewModel from "../pages/ViewCart/ViewModel"
 
 interface Iprops {
@@ -18,7 +18,7 @@ interface Iprops {
   dataOut?: IdataOut
 }
 
-export default function SimpleContainer(props: Iprops) {
+const ShoppingCartIndex = (props: Iprops) => {
   const { dataIn, dataLoad, dataOut } = props
 
   const {
@@ -100,3 +100,4 @@ export default function SimpleContainer(props: Iprops) {
     </React.Fragment>
   )
 }
+export default ShoppingCartIndex

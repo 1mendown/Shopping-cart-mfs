@@ -2,7 +2,7 @@ import { RootState } from "../../store"
 import { createSlice, PayloadAction, createAction } from "@reduxjs/toolkit"
 import IarrayOfObjects from "../../types/ArrayOfObject"
 
-interface statetypes {
+export interface IshopCartStateTypes {
   items: IarrayOfObjects[]
   viewItem: {
     isOpen: boolean
@@ -17,7 +17,7 @@ interface statetypes {
   purchased: boolean
 }
 
-export const initialState: statetypes = {
+export const initialState: IshopCartStateTypes = {
   items: [],
   viewItem: {
     isOpen: false

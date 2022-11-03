@@ -7,6 +7,7 @@
     "target": "es5",
     "lib": ["DOM", "ES6", "DOM.Iterable", "ScriptHost", "ES2016.Array.Include"],
     "allowJs": true,
+    "checkJs": false,
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
@@ -18,7 +19,11 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "declaration": true,
+    "outDir": "./dist/lib/es6",
+    "declarationDir": "types",
+    "typeRoots": ["src/@types", "node_modules/@types"]
   },
   "include": ["src", "react-app-env.d.ts"]
 }

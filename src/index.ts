@@ -1,3 +1,3 @@
-import { default as ShoppingCart } from "./App"
+import { default as ShoppingCart } from "./wrapper"
 
 export { ShoppingCart }

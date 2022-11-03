@@ -12,7 +12,7 @@ import IdataLoad from "../../types/dataLoad"
 import safeAccess from "../../utils/safeAccess"
 import IarrayOfObjects from "../../types/ArrayOfObject"
 
-const ViewModel = (dataLoad?: IdataLoad) => {
+const ListItemsViewModel = (dataLoad?: IdataLoad) => {
   const ItemsSelector = useAppSelector(shopSelector, shallowEqual)
   const dispatch = useAppDispatch()
 
@@ -67,4 +67,4 @@ const ViewModel = (dataLoad?: IdataLoad) => {
   }
 }
 
-export default ViewModel
+export default ListItemsViewModel
