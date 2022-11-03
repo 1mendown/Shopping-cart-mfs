@@ -213,7 +213,7 @@ export default function App() {
 
 ![](https://gitlab.com/quality-developers/demogif/-/blob/main/sampleDemo.gif)
 
-<!-- <img src='/src/assets/shoppingCartDemo.gif'/> -->
+
 
 ## Peer Dependecies
 
