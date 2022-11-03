@@ -1,6 +1,6 @@
 {
   "name": "shopping-cart-mfs",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Simple Shopping cart for mini app",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
