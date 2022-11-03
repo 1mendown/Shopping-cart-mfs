@@ -1,4 +1,4 @@
-export default interface DataOut {
+export default interface IdataOut {
   snackBarMessage: (value: boolean) => JSX.Element
   addToCartSnackBarMessage: (
     openSnackBar: boolean,

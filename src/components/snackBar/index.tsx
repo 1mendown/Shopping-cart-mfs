@@ -2,13 +2,13 @@ import * as React from "react"
 import Snackbar from "@mui/material/Snackbar"
 import MuiAlert from "@mui/material/Alert"
 
-export interface State {
+export interface Istate {
   open: boolean
   message: string
   handleClose: (data: boolean) => void
 }
 
-export default function PositionedSnackbar({ open, message, handleClose }: State) {
+export default function PositionedSnackbar({ open, message, handleClose }: Istate) {
   const [openSnackbar, setOpen] = React.useState<boolean>(false)
 
   React.useEffect(() => {

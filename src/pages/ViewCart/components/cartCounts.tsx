@@ -1,12 +1,12 @@
 import * as React from "react"
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart"
 
-type Props = {
+type Tprops = {
   itemCounts: number | string
   handleOpenCart: (data: boolean) => void
 }
 
-const CartCounts = ({ itemCounts, handleOpenCart }: Props) => {
+const CartCounts = ({ itemCounts, handleOpenCart }: Tprops) => {
   return (
     <div className="relative">
       <ShoppingCartIcon

@@ -1,6 +1,6 @@
 import { CSSProperties } from "react"
 
-export default interface DataIN {
+export default interface IdataIn {
   addToCartHeader: {
     id: string
     header: string
@@ -24,7 +24,7 @@ export default interface DataIN {
   }[]
 }
 
-export interface itemListHeader {
+export interface IitemListHeader {
   id: string
   nestedObj?: boolean
   withIcons?: JSX.Element

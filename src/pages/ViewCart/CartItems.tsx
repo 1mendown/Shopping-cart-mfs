@@ -1,28 +1,26 @@
-import safeAccess from "../../utils/safeAccess"
 import CardCounts from "./components/cartCounts"
-import ViewModel from "./ViewModel"
 import DialogBox from "../../components/dialogs"
 import AddedToCart from "./components/addedToCart"
 import Checkout from "./components/checkout"
-import ArrayOfObjects from "../../types/ArrayOfObject"
+import IarrayOfObjects from "../../types/ArrayOfObject"
 
-type Props = {
+type Tprops = {
   headers?: { [key: string]: string }[]
   snackBarMessage: (value: boolean) => JSX.Element
   itemCounts: number | string
   handleOpenCart: (data: boolean) => void
   open: boolean
-  cartItems: ArrayOfObjects[]
+  cartItems: IarrayOfObjects[]
   handleQuantity: (action: string, id: unknown) => void
   handleRemoveCartItems: (data: string | number) => void
-  SubTotal: number | string
-  ShippingFee: number | string
-  Total: number | string
+  subTotal: number | string
+  shippingFee: number | string
+  total: number | string
   handleCheckoutExit: (data: boolean) => void
   checkout: boolean
 }
 
-const CartItems = (props: Props) => {
+const CartItems = (props: Tprops) => {
   const {
     headers,
     snackBarMessage,
@@ -32,9 +30,9 @@ const CartItems = (props: Props) => {
     cartItems,
     handleQuantity,
     handleRemoveCartItems,
-    SubTotal,
-    ShippingFee,
-    Total,
+    subTotal,
+    shippingFee,
+    total,
     handleCheckoutExit,
     checkout
   } = props
@@ -52,9 +50,9 @@ const CartItems = (props: Props) => {
         />
         <Checkout
           itemCounts={itemCounts}
-          SubTotal={SubTotal}
-          ShippingFee={ShippingFee}
-          Total={Total}
+          subTotal={subTotal}
+          shippingFee={shippingFee}
+          total={total}
           handleCheckoutExit={handleCheckoutExit}
         />
       </DialogBox>

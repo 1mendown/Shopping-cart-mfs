@@ -1,19 +1,19 @@
 import Box from "@mui/material/Box"
 import ItemList from "../../components/ItemList"
-import ArrayOfObjects from "../../types/ArrayOfObject"
+import IarrayOfObjects from "../../types/ArrayOfObject"
 import CardItems from "../../components/cardItems"
 import DialogBox from "../../components/dialogs"
-import { itemListHeader } from "../../types/dataIn"
+import { IitemListHeader } from "../../types/dataIn"
 
-type Props = {
-  headers: itemListHeader[]
-  items: ArrayOfObjects[]
+type Tprops = {
+  headers: IitemListHeader[]
+  items: IarrayOfObjects[]
   openCardItems: boolean
-  handleViewItemCLick: (item: ArrayOfObjects) => void
-  cardItems: ArrayOfObjects
+  handleViewItemCLick: (item: IarrayOfObjects) => void
+  cardItems: IarrayOfObjects
   handleCloseItem?: (e: React.MouseEvent<any>) => void
-  handleAddTuCart: (data: ArrayOfObjects | boolean) => void
-  handleCheckoutCart: (data: ArrayOfObjects) => void
+  handleAddTuCart: (data: IarrayOfObjects | boolean) => void
+  handleCheckoutCart: (data: IarrayOfObjects) => void
 }
 
 const mainWindow = ({
@@ -25,7 +25,7 @@ const mainWindow = ({
   handleCloseItem,
   handleAddTuCart,
   handleCheckoutCart
-}: Props) => {
+}: Tprops) => {
   return (
     <>
       <Box

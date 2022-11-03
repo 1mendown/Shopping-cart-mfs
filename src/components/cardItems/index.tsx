@@ -8,13 +8,13 @@ import Button from "@mui/material/Button"
 import Typography from "@mui/material/Typography"
 import safeAccess from "../../utils/safeAccess"
 
-import ArrayOfObjects from "../../types/ArrayOfObject"
+import IarrayOfObjects from "../../types/ArrayOfObject"
 
 type Props = {
-  item: ArrayOfObjects
+  item: IarrayOfObjects
   handleCloseItem?: (e: React.MouseEvent<any>) => void
-  handleAddTuCart: (data: ArrayOfObjects) => void
-  handleCheckoutCart: (data: ArrayOfObjects) => void
+  handleAddTuCart: (data: IarrayOfObjects) => void
+  handleCheckoutCart: (data: IarrayOfObjects) => void
 }
 
 export default function MediaCard(props: Props) {

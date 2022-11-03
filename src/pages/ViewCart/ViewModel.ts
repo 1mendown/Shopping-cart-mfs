@@ -78,9 +78,9 @@ const ViewModel = () => {
     handleOpenCart,
     handleQuantity,
     handleRemoveCartItems,
-    SubTotal: computeSubtotal.toFixed(2),
-    ShippingFee: computeShippingFee.toFixed(2),
-    Total: computeTotalValue.toFixed(2),
+    subTotal: computeSubtotal.toFixed(2),
+    shippingFee: computeShippingFee.toFixed(2),
+    total: computeTotalValue.toFixed(2),
     handleCheckoutExit,
     checkout
   }

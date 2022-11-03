@@ -1,18 +1,18 @@
 import * as React from "react"
 import { Grid, Paper, Typography, Stack } from "@mui/material"
-import ArrayOfObjects from "../../types/ArrayOfObject"
+import IarrayOfObjects from "../../types/ArrayOfObject"
 import safeAccess from "../../utils/safeAccess"
-import { itemListHeader } from "../../types/dataIn"
+import { IitemListHeader } from "../../types/dataIn"
 interface Props {
-  items: ArrayOfObjects[]
-  onClickValue: (item: ArrayOfObjects) => void
-  headers: itemListHeader[]
+  items: IarrayOfObjects[]
+  onClickValue: (item: IarrayOfObjects) => void
+  headers: IitemListHeader[]
 }
 
 export default function ItemList(props: Props) {
   const { items, onClickValue, headers } = props
 
-  const HandleClick = (item: ArrayOfObjects) => {
+  const HandleClick = (item: IarrayOfObjects) => {
     onClickValue(item)
   }
 
@@ -23,9 +23,10 @@ export default function ItemList(props: Props) {
         spacing={6}
         sx={{ overflow: "auto", height: "80vh", marginTop: "3em" }}
       >
-        {items.map((item: ArrayOfObjects) => (
+        {items.map((item: IarrayOfObjects) => (
           <Grid item xs={12} md={6} lg={3} key={`${item.title}`}>
             <Stack
+              key={`${item.title}`}
               onClick={() => HandleClick(item)}
               direction={"column"}
               alignItems={"center"}
@@ -40,7 +41,10 @@ export default function ItemList(props: Props) {
             >
               {headers.map((headerItems: { [key: string]: any }) => {
                 return (
-                  <div className={headerItems["className"]}>
+                  <div
+                    className={headerItems["className"]}
+                    key={`${headerItems["accessor"]}`}
+                  >
                     {headerItems.hasImage ? (
                       headerItems.imageComponent(
                         safeAccess(item, [`${headerItems["accessor"]}`])

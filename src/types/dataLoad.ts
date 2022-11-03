@@ -1,4 +1,4 @@
-export default interface DataLoad {
+export default interface IdataLoad {
   api: {
     [key: string]: any
   }

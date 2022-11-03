@@ -1,20 +1,20 @@
 import { Button, Divider, Grid } from "@mui/material"
 
-type Props = {
-  SubTotal: number | string
-  ShippingFee: number | string
-  Total: number | string
+type Tprops = {
+  subTotal: number | string
+  shippingFee: number | string
+  total: number | string
   handleCheckoutExit: (data: boolean) => void
   itemCounts: number | string
 }
 
 const Checkout = ({
-  SubTotal,
-  ShippingFee,
-  Total,
+  subTotal,
+  shippingFee,
+  total,
   handleCheckoutExit,
   itemCounts
-}: Props) => {
+}: Tprops) => {
   return (
     <Grid container sx={{ marginTop: "1em", marginBottom: "1em", rowGap: "1em" }}>
       <Divider />
@@ -29,7 +29,7 @@ const Checkout = ({
         }}
       >
         <span className="font-bold">Subtotal</span>
-        <span> &#8369;{SubTotal}</span>
+        <span> &#8369;{subTotal}</span>
       </Grid>
       <Divider />
       <Grid
@@ -39,7 +39,7 @@ const Checkout = ({
         sx={{ display: "flex", justifyContent: "center", gap: "10em" }}
       >
         <span className="font-bold">Shipping</span>
-        <span> &#8369;{ShippingFee}</span>
+        <span> &#8369;{shippingFee}</span>
       </Grid>
       <Divider />
       <Grid
@@ -54,7 +54,7 @@ const Checkout = ({
         }}
       >
         <span className="font-bold">TOTAL</span>
-        <span>&#8369;{Total}</span>
+        <span>&#8369;{total}</span>
       </Grid>
 
       <Button

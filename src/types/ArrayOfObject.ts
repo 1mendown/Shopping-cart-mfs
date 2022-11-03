@@ -1,3 +1,3 @@
-export default interface ArrayOfObjects {
+export default interface IarrayOfObjects {
   [key: string]: unknown
 }

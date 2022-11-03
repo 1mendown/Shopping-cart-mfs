@@ -8,20 +8,24 @@ import {
   setAddTuCartItems,
   setViewCartItems
 } from "../../store/featuresSlice/shopCartSlice"
-import DataLoad from "../../types/dataLoad"
+import IdataLoad from "../../types/dataLoad"
+import safeAccess from "../../utils/safeAccess"
+import IarrayOfObjects from "../../types/ArrayOfObject"
 
-import ArrayOfObjects from "../../types/ArrayOfObject"
-
-const ViewModel = (dataLoad?: DataLoad) => {
+const ViewModel = (dataLoad?: IdataLoad) => {
   const ItemsSelector = useAppSelector(shopSelector, shallowEqual)
   const dispatch = useAppDispatch()
 
   const fetchData = async () => {
-    const dataresult: ArrayOfObjects[] = await dataLoad?.api.getAll
-    dispatch(setGetInitialData(dataresult))
+    const dataresult: IarrayOfObjects[] = await safeAccess(dataLoad, [
+      "api",
+      "getAll"
+    ])
+
+    dispatch(setGetInitialData(safeAccess(dataresult, ["data"])))
   }
 
-  const HandleViewItemCLick = React.useCallback((item: ArrayOfObjects) => {
+  const handleViewItemCLick = React.useCallback((item: IarrayOfObjects) => {
     dispatch(setViewItemDetails(item))
   }, [])
 
@@ -29,11 +33,11 @@ const ViewModel = (dataLoad?: DataLoad) => {
     dispatch(setViewItemDetails({}))
   }, [])
 
-  const handleAddTuCart = React.useCallback((item: ArrayOfObjects | boolean) => {
+  const handleAddTuCart = React.useCallback((item: IarrayOfObjects | boolean) => {
     dispatch(setAddTuCartItems(item))
   }, [])
 
-  const handleCheckoutCart = React.useCallback((item: ArrayOfObjects) => {
+  const handleCheckoutCart = React.useCallback((item: IarrayOfObjects) => {
     dispatch(setAddTuCartItems(item))
     dispatch(setViewItemDetails({}))
     dispatch(setViewCartItems(true))
@@ -56,7 +60,7 @@ const ViewModel = (dataLoad?: DataLoad) => {
   return {
     ItemsSelector,
     setGetInitialData,
-    HandleViewItemCLick,
+    handleViewItemCLick,
     handleAddTuCart,
     handleCloseItem,
     handleCheckoutCart

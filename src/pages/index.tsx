@@ -5,26 +5,26 @@ import ListOfItems from "./ListOfItems/ListOfItems"
 import Container from "@mui/material/Container"
 import ViewCart from "./ViewCart/CartItems"
 import CssBaseline from "@mui/material/CssBaseline"
-import DataIN from "../types/dataIn"
-import DataLoad from "../types/dataLoad"
-import DataOut from "../types/dataOut"
+import IdataIN from "../types/dataIn"
+import IdataLoad from "../types/dataLoad"
+import IdataOut from "../types/dataOut"
 import safeAccess from "../utils/safeAccess"
 import ListItemViewModel from "../pages/ListOfItems/ViewModel"
 import CartItemsViewModel from "../pages/ViewCart/ViewModel"
 
-interface Props {
-  dataIn?: DataIN
-  dataLoad?: DataLoad
-  dataOut?: DataOut
+interface Iprops {
+  dataIn?: IdataIN
+  dataLoad?: IdataLoad
+  dataOut?: IdataOut
 }
 
-export default function SimpleContainer(props: Props) {
+export default function SimpleContainer(props: Iprops) {
   const { dataIn, dataLoad, dataOut } = props
 
   const {
     ItemsSelector,
     handleAddTuCart,
-    HandleViewItemCLick,
+    handleViewItemCLick,
     handleCloseItem,
     handleCheckoutCart
   } = ListItemViewModel(dataLoad)
@@ -36,9 +36,9 @@ export default function SimpleContainer(props: Props) {
     handleOpenCart,
     handleQuantity,
     handleRemoveCartItems,
-    SubTotal,
-    ShippingFee,
-    Total,
+    subTotal,
+    shippingFee,
+    total,
     handleCheckoutExit,
     checkout
   } = CartItemsViewModel()
@@ -69,9 +69,9 @@ export default function SimpleContainer(props: Props) {
                   cartItems={cartItems}
                   handleQuantity={handleQuantity}
                   handleRemoveCartItems={handleRemoveCartItems}
-                  SubTotal={SubTotal}
-                  ShippingFee={ShippingFee}
-                  Total={Total}
+                  subTotal={subTotal}
+                  shippingFee={shippingFee}
+                  total={total}
                   handleCheckoutExit={handleCheckoutExit}
                   checkout={checkout}
                 />
@@ -83,7 +83,7 @@ export default function SimpleContainer(props: Props) {
                 handleCloseItem={handleCloseItem}
                 handleAddTuCart={handleAddTuCart}
                 handleCheckoutCart={handleCheckoutCart}
-                handleViewItemCLick={HandleViewItemCLick}
+                handleViewItemCLick={handleViewItemCLick}
                 items={safeAccess(ItemsSelector, ["items"])}
                 openCardItems={safeAccess(ItemsSelector, ["viewItem", "isOpen"])}
                 headers={safeAccess(dataIn, ["itemListHeader"])}

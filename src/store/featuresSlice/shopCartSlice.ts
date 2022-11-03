@@ -1,14 +1,14 @@
 import { RootState } from "../../store"
 import { createSlice, PayloadAction, createAction } from "@reduxjs/toolkit"
-import ArrayOfObjects from "../../types/ArrayOfObject"
+import IarrayOfObjects from "../../types/ArrayOfObject"
 
 interface statetypes {
-  items: ArrayOfObjects[]
+  items: IarrayOfObjects[]
   viewItem: {
     isOpen: boolean
     [key: string]: unknown
   }
-  addCartItems: ArrayOfObjects[]
+  addCartItems: IarrayOfObjects[]
   addCartMessage: {
     message: string
     open: boolean
@@ -35,52 +35,81 @@ export const ShopCartSlice = createSlice({
   name: "ShopCart",
   initialState,
   reducers: {
-    setGetInitialData: (state, { payload }: PayloadAction<ArrayOfObjects[]>) => {
-      state.items = payload
+    setGetInitialData: (state, { payload }: PayloadAction<IarrayOfObjects[]>) => {
+      return {
+        ...state,
+        items: payload
+      }
     },
-    setViewItemDetails: (state, { payload }: PayloadAction<ArrayOfObjects>) => {
+    setViewItemDetails: (state, { payload }: PayloadAction<IarrayOfObjects>) => {
       const toggle = Object.keys(payload).length === 0 ? false : true
 
       if (toggle) {
-        state.viewItem = {
-          ...state.viewItem,
-          isOpen: true,
-          ...payload
+        return {
+          ...state,
+          viewItem: {
+            ...state.viewItem,
+            isOpen: true,
+            ...payload
+          }
         }
       } else {
-        state.viewItem = {
-          isOpen: !state.viewItem.isOpen
+        return {
+          ...state,
+          viewItem: {
+            ...state.viewItem,
+            isOpen: !state.viewItem.isOpen
+          }
         }
       }
     },
+
     setAddTuCartItems: (
       state,
-      { payload }: PayloadAction<ArrayOfObjects | boolean>
+      { payload }: PayloadAction<IarrayOfObjects | boolean>
     ) => {
       const newArray = [...state.addCartItems]
 
       if (typeof payload === "object") {
-        state.addCartItems = [...newArray, { ...payload, quantity: 1 }]
+        return {
+          ...state,
+          addCartItems: [...newArray, { ...payload, quantity: 1 }]
+        }
       }
 
-      state.addCartMessage = {
-        ...state.addCartMessage,
-        message: "Sucessfully Added To Cart",
-        open: typeof payload === "object" ? true : false
+      return {
+        ...state,
+        addCartMessage: {
+          ...state.addCartMessage,
+          message: "Sucessfully Added To Cart",
+          open: typeof payload === "object" ? true : false
+        }
       }
     },
     setViewCartItems: (state, { payload }: PayloadAction<boolean>) => {
-      state.viewCartOpen = payload
+      return {
+        ...state,
+        viewCartOpen: payload
+      }
     },
-    setQuantityValue: (state, { payload }: PayloadAction<ArrayOfObjects[]>) => {
-      state.addCartItems = payload
+    setQuantityValue: (state, { payload }: PayloadAction<IarrayOfObjects[]>) => {
+      return {
+        ...state,
+        addCartItems: payload
+      }
     },
-    setRemoveItemValue: (state, { payload }: PayloadAction<ArrayOfObjects[]>) => {
-      state.addCartItems = payload
+    setRemoveItemValue: (state, { payload }: PayloadAction<IarrayOfObjects[]>) => {
+      return {
+        ...state,
+        addCartItems: payload
+      }
     },
     setIsCheckout: (state, { payload }: PayloadAction<boolean>) => {
-      state.viewCartOpen = false
-      state.purchased = payload
+      return {
+        ...state,
+        viewCartOpen: false,
+        purchased: payload
+      }
     }
   }
 })
@@ -98,6 +127,6 @@ export const {
 export const setHandleQuantity = createAction<unknown>("setHandleQuantity")
 export const setRemoveCartItems = createAction<string | number>("setRemoveCartItems")
 
-export const ShopCartReducer = ShopCartSlice.reducer
+export const shoppingCart = ShopCartSlice.reducer
 
-export const shopSelector = (state: RootState) => state.ShopCartReducer
+export const shopSelector = (state: RootState) => state.shoppingCart

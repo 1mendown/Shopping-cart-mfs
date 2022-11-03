@@ -74,9 +74,11 @@ export default function App() {
     <ShoppingCart
       dataLoad={{
         api: {
-          getAll: Products.GeAll("products")
+          getAll: getAll: axios.get("https://fakestoreapi.com/")  sample return value ![plot](./src/assets/returnValue.png)
+
         }
       }}
+
       dataIn={{
         itemListHeader: [
           {

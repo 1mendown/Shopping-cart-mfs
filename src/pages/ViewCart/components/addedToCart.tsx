@@ -8,14 +8,14 @@ import Paper from "@mui/material/Paper"
 import Box from "@mui/material/Box"
 import AddIcon from "@mui/icons-material/Add"
 import RemoveIcon from "@mui/icons-material/Remove"
-import ArrayOfObjects from "../../../types/ArrayOfObject"
+import IarrayOfObjects from "../../../types/ArrayOfObject"
 import safeAccess from "../../../utils/safeAccess"
 import Stack from "@mui/material/Stack"
 import CloseIcon from "@mui/icons-material/Close"
 import CancelIcon from "@mui/icons-material/Cancel"
 
-type Props = {
-  cartItemList: ArrayOfObjects[]
+type Tprops = {
+  cartItemList: IarrayOfObjects[]
   headers?: { [key: string]: string }[]
   handleQuantity: (action: string, id: unknown) => void
   handleCloseAddToCart: (data: boolean) => void
@@ -28,7 +28,7 @@ const AddedToCart = ({
   handleCloseAddToCart,
   handleRemoveCartItems,
   headers
-}: Props) => {
+}: Tprops) => {
   return (
     <Box sx={{ width: "100%", height: "100%" }}>
       <>
