@@ -32,6 +32,7 @@ export default [
         sourcemap: true
       }
     ],
+    external: ["react", "@material-ui/core"],
     plugins: [
       peerDepsExternal(),
       resolve(),
@@ -40,6 +41,8 @@ export default [
       typescript({
         useTsconfigDeclarationDir: true,
         jsx: "react",
+        rollupCommonJSResolveHack: true,
+        clean: true,
         tsconfigOverride: {
           exclude: ["/src/stories", "**/*.stories.tsx"]
         }
