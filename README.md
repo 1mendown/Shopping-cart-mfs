@@ -208,7 +208,7 @@ export default function App() {
 ## Sample Return value 
 
 ```sh 
-![plot](./src/assets/returnValue.png)
+![alt text](./src/assets/returnValue.png)
 ```
 
 ## Peer Dependecies
