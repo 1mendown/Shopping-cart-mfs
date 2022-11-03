@@ -5,10 +5,10 @@ import DataIN from "../src/types/dataIn"
 import DataLoad from "../src/types/dataLoad"
 import DataOut from "../src/types/dataOut"
 
-export interface DataProps  {
+export interface DataProps {
   dataIn?: DataIN
   dataLoad?: DataLoad
-  dataOut: DataOut
+  dataOut?: DataOut
 }
 
 export default function ShoppingCartIndex({ dataIn, dataLoad, dataOut }: DataProps) {
