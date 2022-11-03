@@ -211,6 +211,11 @@ export default function App() {
 <img src='/src/assets/returnValue.png'/>
 
 
+## Demo 
+
+<img src='/src/assets/shoppingCartDemo.gif'/>
+
+
 ## Peer Dependecies
 
 ```sh
