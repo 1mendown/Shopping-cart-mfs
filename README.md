@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Bootcamp Sample of Simple Shopping Cart
 
 Bootcamp Sample of Simple Shopping Cart
@@ -228,3 +229,7 @@ export default function App() {
 "react": "^17.0.2",
 "react-dom": "^17.0.2"
 ```
+=======
+# Shopping-cart-mfs
+Simple Shopping cart
+>>>>>>> 4b4a3fbe1dd65c9cc024982d30766ba5b57d6fd8
