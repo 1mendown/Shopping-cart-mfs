@@ -1,9 +1,8 @@
-<<<<<<< HEAD
 # Bootcamp Sample of Simple Shopping Cart
 
 Bootcamp Sample of Simple Shopping Cart
 
-[![repository](https://img.shields.io/badge/repo-gitlab-orange)](https://gitlab.com/quality-developers/shopping-cart)
+[![repository](https://img.shields.io/badge/repo-gitlab-orange)](https://github.com/1mendown/Shopping-cart-mfs/)
 
 ## Mini App
 
@@ -19,6 +18,19 @@ npm install shopping-cart-mfs
 
 ```sh
 import { ShoppingCart } from "shopping-cart-mfs"
+
+
+additional config kindly add these to your react-app-env.d.ts to remove type declaration error
+
+<img src='/src/assets/reactEnv.png'/>
+
+
+and if your are using React 18 kindly downgrade your react and react-dom to 17.0.2 and tweak your index.ts to look like this.
+
+
+<img src='/src/assets/index.png'/>
+
+
 ```
 
 ## Types
@@ -229,7 +241,3 @@ export default function App() {
 "react": "^17.0.2",
 "react-dom": "^17.0.2"
 ```
-=======
-# Shopping-cart-mfs
-Simple Shopping cart
->>>>>>> 4b4a3fbe1dd65c9cc024982d30766ba5b57d6fd8

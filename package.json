@@ -7,7 +7,7 @@
   "types": "lib/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "https://gitlab.com/quality-developers/shopping-cart"
+    "url": "https://github.com/1mendown/Shopping-cart-mfs/"
   },
   "dependencies": {
     "@emotion/react": "^11.10.4",
