@@ -19,19 +19,15 @@ npm install shopping-cart-mfs
 ```sh
 import { ShoppingCart } from "shopping-cart-mfs"
 
+```
 
 additional config kindly add these to your react-app-env.d.ts to remove type declaration error
 
 <img src='/src/assets/reactEnv.png'/>
 
-
 and if your are using React 18 kindly downgrade your react and react-dom to 17.0.2 and tweak your index.ts to look like this.
 
-
 <img src='/src/assets/index.png'/>
-
-
-```
 
 ## Types
 
